@@ -2,7 +2,7 @@ use regex::Regex;
 use std::env;
 use std::fs;
 use std::io::{self, BufRead, Write};
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 const OSC: &str = "\x1b]";
 const BEL: &str = "\x07";
@@ -98,6 +98,7 @@ fn main() -> io::Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::path::PathBuf;
 
     fn test_regex() -> Regex {
         let prefixes = vec![
