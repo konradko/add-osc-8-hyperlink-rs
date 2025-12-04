@@ -1,5 +1,7 @@
 # add-osc-8-hyperlink
 
+A Rust port of [sentriz/add-osc-8-hyperlink](https://github.com/sentriz/add-osc-8-hyperlink).
+
 Add clickable OSC 8 hyperlinks to file paths in terminal output while preserving ANSI color codes.
 
 ## Features
