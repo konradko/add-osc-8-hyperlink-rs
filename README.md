@@ -12,10 +12,10 @@ Add clickable OSC 8 hyperlinks to file paths in terminal output while preserving
 ## Installation
 
 ```bash
-cargo install --path .
+cargo install add-osc-8-hyperlink
 ```
 
-Or build manually:
+Or build from source:
 
 ```bash
 cargo build --release
@@ -70,6 +70,17 @@ Paths are wrapped in OSC 8 escape sequences:
 ```
 
 ANSI color codes (`\e[31m`, etc.) are explicitly excluded from path matching, so colored output passes through unchanged.
+
+## Performance
+
+Benchmarked against the [Go implementation](https://github.com/sentriz/add-osc-8-hyperlink):
+
+| Input Size | Rust | Go | Speedup |
+|------------|------|-----|---------|
+| 5,000 lines | 15.7 ms | 37.6 ms | 2.4x faster |
+| 50,000 lines | 103.3 ms | 306.1 ms | 3.0x faster |
+
+Binary size: 1.6 MB (Rust) vs 2.8 MB (Go)
 
 ## License
 
