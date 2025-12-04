@@ -13,8 +13,14 @@ Add clickable OSC 8 hyperlinks to file paths in terminal output while preserving
 
 ## Installation
 
+From crates.io:
 ```bash
 cargo install add-osc-8-hyperlink
+```
+
+From GitHub:
+```bash
+cargo install --git https://github.com/konradko/add-osc-8-hyperlink-rs
 ```
 
 Or build from source:
