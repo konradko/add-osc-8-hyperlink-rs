@@ -2,12 +2,27 @@
 
 A Rust port of [sentriz/add-osc-8-hyperlink](https://github.com/sentriz/add-osc-8-hyperlink).
 
-Add clickable OSC 8 hyperlinks to file paths in terminal output while preserving ANSI color codes.
+Add clickable OSC 8 hyperlinks to file paths in terminal output. Useful for commands that don't have native hyperlink support.
+
+## Native Hyperlink Support
+
+Some tools have built-in OSC 8 hyperlink support - use that instead:
+
+- **ripgrep**: `rg --hyperlink-format='file://{host}{path}'` (or add to `~/.ripgreprc`)
+- **ls (GNU coreutils)**: `ls --hyperlink=auto`
+
+This tool is for commands **without** native support, like `git status`.
+
+### Note on Piping
+
+Use `--hyperlink=auto` (not `always`) for tools like `ls`. The `auto` option disables hyperlinks when piping to other commands, avoiding issues where escape sequences can interfere with downstream processing.
+
+For more details, see [this ripgrep discussion](https://github.com/BurntSushi/ripgrep/discussions/2762) about hyperlink handling in pipes.
 
 ## Features
 
 - Converts file paths to clickable `file://` hyperlinks
-- Preserves ANSI color codes (works with colored output from `git status`, `rg`, etc.)
+- Preserves ANSI color codes
 - Supports absolute paths, relative paths, and `~/` home directory expansion
 - Works with any terminal that supports OSC 8 hyperlinks (Ghostty, iTerm2, WezTerm, etc.)
 
@@ -38,11 +53,8 @@ Pipe any command output through the tool:
 # Git status with colors and clickable file paths
 git -c color.status=always status | add-osc-8-hyperlink
 
-# Ripgrep with clickable results
-rg --color=always pattern | add-osc-8-hyperlink
-
-# Any command with file paths
-ls -la | add-osc-8-hyperlink
+# Any command that outputs file paths
+some-command | add-osc-8-hyperlink
 ```
 
 ### Shell Integration

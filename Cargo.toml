@@ -1,6 +1,6 @@
 [package]
 name = "add-osc-8-hyperlink"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "Add OSC 8 hyperlinks to file paths in terminal output"
 license = "MIT"
